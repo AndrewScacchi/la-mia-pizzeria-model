@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "_Layout2";
+
+    //snack 1
+    string name = "Andrea";
+    string lastname = "Scacchi";
+
+    //snack 2
+    int sum(int n)
+    {
+        int number = 1;
+        for (int i = 1; i < n; i++)
+        {
+            number += (i + 1);
+        }
+        return number;
+    }
+
+    //snack 3
+    string sentence = "nel mezzo del cammin di nostra vita";
+    int counter(string sentence, char search)
+    {
+        int numberChar = 0;
+        foreach (char character in sentence)
+        {
+            if (character == search)
+            {
+                numberChar++;
+            }
+        }
+        return numberChar;
+    }
+
+    //snack 4
+    Random rnd = new Random();
+    List<int> myList = new List<int>();
+    for (int j = 0; j < 20; j++)
+    {
+        myList.Add(rnd.Next(0, 91));
+    }
+
+    //snack 6
+    var date = DateTime.Today.AddDays(-7).ToString("yyyy/MM/dd");
+    string today = DateTime.Today.DayOfWeek.ToString();
+    var anotherDay = DateTime.Today.AddYears(1).DayOfWeek.ToString();
+}
+
+<h1> Snacks Razor </h1>
+
+<div class="mt-4">
+    <h4> Snack 1 </h4>
+    <p>
+        Dichiarare una variabile valorizzandola con il nostro nome.
+        Dichiarare un'altra variabile valorizzandola con il nostro cognome.
+        Stampare il nostro nome e cognome all'interno di un tag h2.
+    </p>
+    <h2> @name @lastname </h2>
+</div>
+
+<div class="mt-4">
+    <h4> Snack 2 </h4>
+    <p>
+        Creare una funzione che stampa la somma dei numeri che vanno da 1 a n (con n passato come parametro - n incluso).
+        Stampare dentro uno span il risultato.
+    </p>
+    <span> La somma dei numeri da 1 a 5 è: @sum(5) </span>
+</div>
+
+<div class="mt-4">
+    <h4> Snack 3 </h4>
+    <p>
+        Contare quante volte la lettera a è presente nalla frase "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina
+    </p>
+    <p> La lettera "e" è presente: @counter(sentence, 'e') volte. </p>
+</div>
+
+<div class="mt-4">
+    <h4> Snack 4 </h4>
+    <p>
+        Creare una List di tipo int di 20 numeri interi (generati random da 1 a 90, 1 e 90 inclusi) e mostrare in pagina solo i numeri compresi tra 20 e 70
+    </p>
+    <p>
+        I numeri random compresi tra 20 e 70 sono:
+        <br />
+        @foreach (int number in myList)
+        {
+            @if (number >= 20 && number <= 70)
+            {
+                <span>@number</span>
+            }
+        }
+    </p>
+</div>
+
+<div class="mt-4">
+    <h4> Snack 5 </h4>
+    <p>
+        Stampare in pagina la data e l'ora attuale (usando la classe DateTime) con il formato anno-mese-giorno ore:minuti:secondi
+    </p>
+    <p>
+        @DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss").
+    </p>
+</div>
+
+<div class="mt-4">
+    <h4> Snack 6 </h4>
+    <p>
+        Partendo dalla data di oggi (usando la classe DateTime) stampare in pagina
+        a. la data di 7 giorni fa
+        b. che giorno della settimana è oggi (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+        c. che giorno della settimana sarà nello stesso giorno e mese di oggi ma tra un anno (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+    </p>
+    <p>
+        La data di 7 giorni fa è: @date.
+        <br />
+
+        Oggi è il giorno: @today.
+        <br />
+
+        Il giorno di oggi tra un anno è: @anotherDay.
+    </p>
+</div>
